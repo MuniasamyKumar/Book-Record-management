@@ -10,7 +10,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Server is Up and Running...",
-    data: "Hey",
+    data: "Hey Prabu...",
   });
 });
 
