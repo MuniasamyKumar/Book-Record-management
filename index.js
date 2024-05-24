@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 8081;
-const { users } = require("./data/users.json");
+
+const userRouter = require("./routes/users.js");
+const bookRouter = require("./routes/books.js");
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -11,12 +14,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/users", (req, res) => {
-  res.status(200).json({
-    success: true,
-    data: users,
-  });
-});
+app.use("/users", userRouter);
+app.use("/books", bookRouter);
 
 app.get("*", (req, res) => {
   res.status(404).json({
